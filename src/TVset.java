@@ -1,7 +1,12 @@
 public class TVset {
 
-    int channel = 1;
-    boolean isOn; //по-умолчанию false
+    private int channel = 1;
+    private boolean isOn; //по-умолчанию false
+    private Remote pult = new Remote();
+
+    public Remote getPult() {
+        return pult;
+    }
 
     @Override
     public String toString() {
@@ -10,30 +15,23 @@ public class TVset {
         }
         return "Канал " + channel + " включён сейчас";
     }
-}
 
 
-class Remote {
-    //ссылка на тв, которым управляем
-    private TVset tv;
+    class Remote {
 
-    //связываем тв с пультом
-    public void setTV(TVset tv) {
-        this.tv = tv;
-    }
+        //переключаем каналы на тв
+        public void setChannel(int number) {
+            channel = number;
+        }
 
-    //переключаем каналы на тв
-    public void setChannel(int number) {
-        tv.channel = number;
-    }
+        //включаем тв
+        public void turnOn() {
+            isOn = true;
+        }
 
-    //включаем тв
-    public void turnOn() {
-        tv.isOn = true;
-    }
-
-    //выключаем тв
-    public void turnOff() {
-        tv.isOn = false;
+        //выключаем тв
+        public void turnOff() {
+            isOn = false;
+        }
     }
 }
